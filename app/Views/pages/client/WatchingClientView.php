@@ -71,7 +71,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="anime__details__review">
+                    <!-- <div class="anime__details__review">
                         <div class="section-title">
                             <h5>Đánh giá phim</h5>
                         </div>
@@ -84,16 +84,24 @@
                                 <p>Khi nào phim có tập mới dạ</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="anime__details__form">
-                        <div class="section-title">
-                            <h5>Bình luận</h5>
-                        </div>
-                        <form action="#" method="post">
-                            <textarea placeholder="Đánh giá của bạn"></textarea>
-                            <button type="submit"><i class="fa fa-location-arrow"></i> Đánh giá</button>
-                        </form>
-                    </div>
+                    </div> -->
+                    <?php
+                    // if (isset($_SESSION['client_username'])) {
+                    //     echo '
+                    //         <div class="anime__details__form">
+                    //             <div class="section-title">
+                    //                 <h5>Bình luận</h5>
+                    //             </div>
+                    //             <form action="/comment" method="post">
+                    //                 <textarea name="comment" placeholder="Viết bình luận tại đây"></textarea>
+                    //                 <button type="submit"><i class="fa fa-location-arrow"></i> Đánh giá</button>
+                    //             </form>
+                    //         </div>';
+                    // } else {
+                    //     echo "<p class='text-center' style='color: #fff; font-size: 18px;'>Vui lòng <a href='/signin'>đăng nhập</a> để bình luận.</p>";
+                    // }
+                    // 
+                    ?>
                 </div>
             </div>
         </div>

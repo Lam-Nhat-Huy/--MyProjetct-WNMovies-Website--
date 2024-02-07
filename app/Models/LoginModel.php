@@ -197,6 +197,8 @@ class LoginModel extends BaseModel
                 if (password_verify($password, $user['password'])) {
                     $_SESSION['authentication_client'] = true;
                     $_SESSION['client_username'] = $user['username'];
+                    $_SESSION['client_email'] = $user['email'];
+                    $_SESSION['client_user_id'] = $user['id'];
                     header('Location: /home');
                     exit();
                 }

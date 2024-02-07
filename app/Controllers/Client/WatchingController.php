@@ -29,8 +29,4 @@ class WatchingController extends BaseController
             'getAllMovies' => $getAllMovies
         ]);
     }
-
-    public function comment()
-    {
-    }
 }

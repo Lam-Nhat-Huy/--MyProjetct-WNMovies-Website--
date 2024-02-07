@@ -30,16 +30,14 @@ class PremiereController extends BaseController
         $this_page_first_result = ($page - 1) * $result_per_page;
         $number_of_pages = ceil($number_of_results / $result_per_page);
 
-        $o = [
-            'displayMoviesList' => '',
+        $i = [
+            'displayMoviesList' => $this->PremiereModel->displayMoviesList()
         ];
-
-        $o['displayMoviesList'] = $this->PremiereModel->displayMoviesList();
 
         $this->view('AdminMasterView', [
             'pages' => 'admin/APremiereListView',
             'blocks' => 'apremiere/list',
-            'displayMoviesList' => $o['displayMoviesList'],
+            'displayMoviesList' => $i['displayMoviesList'],
             'movies' => $this->PremiereModel->getMoviesLimit($this_page_first_result, $result_per_page),
             'number' => $number_of_pages,
         ]);

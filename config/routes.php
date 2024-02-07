@@ -64,6 +64,7 @@ class routes
         $route->post('/contact', [ContactClientController::class, 'index']);
 
         $route->get('/watching', [WatchingClientController::class, 'index']);
+        $route->post('/comment', [WatchingClientController::class, 'comment']);
 
         try {
             $route->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));
