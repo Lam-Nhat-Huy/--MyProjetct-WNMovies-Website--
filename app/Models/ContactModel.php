@@ -25,8 +25,8 @@ class ContactModel extends BaseModel
             $mail->Port       = getenv('MAIL_PORT');
 
             // Cấu hình gửi mail
-            $mail->setFrom('lamnhathuy0393418721@gmail.com', 'Nhật Huy');
-            $mail->addAddress($email, $username);
+            $mail->setFrom($email, $username);
+            $mail->addAddress('lamnhathuy0393418721@gmail.com', 'Nhật Huy');
 
             $mail->isHTML(true);
             $mail->Subject = 'Mail phản hồi của khách hàng';

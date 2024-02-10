@@ -85,7 +85,8 @@ class MovieModel extends BaseModel
 
             if ($lastInsertId) {
                 $_SESSION['message_success'] = $this->HandleFunction->alertSuccess('Bạn đã công chiếu phim thành công');
-                echo '<script>window.history.go(-2);</script>';
+                header("Location: {$_SERVER['HTTP_REFERER']}");
+                exit;
             } else {
                 $_SESSION['message_error'] =  $this->HandleFunction->alertError('An error occurred while adding the movie. Please try again.');
                 header('Location: /movie/');

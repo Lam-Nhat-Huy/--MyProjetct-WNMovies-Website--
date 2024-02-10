@@ -114,7 +114,7 @@
                                         <div class="flex-grow">
                                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
                                                 <h6 class="preview-subject"><?= $item['username'] ?></h6>
-                                                <p class="text-muted text-small">New</p>
+                                                <p class="text-muted text-small"><?= calculateTimeDifference(strtotime($item['created_at'])); ?></p>
                                             </div>
                                             <p class="text-muted"><?= $item['email'] ?></p>
                                         </div>
@@ -146,7 +146,7 @@
                                         <div class="flex-grow">
                                             <div class="d-flex d-md-block d-xl-flex justify-content-between">
                                                 <h6 class="preview-subject"><?= $item['name'] ?></h6>
-                                                <p class="text-muted text-small">New</p>
+                                                <p class="text-muted text-small"><?= calculateTimeDifference(strtotime($item['created_at'])); ?></p>
                                             </div>
                                             <p class="text-muted"><?= $item['origin_name'] ?></p>
                                         </div>

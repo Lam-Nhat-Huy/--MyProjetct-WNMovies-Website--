@@ -20,6 +20,7 @@ class routes
 {
     public function __construct()
     {
+        // Khi nào liên quan tới form thì dùng post còn get trên url thì dùng get
         $route = new Route;
 
         // Xử lý đăng nhập admin
@@ -40,7 +41,6 @@ class routes
         $route->post('/premiere/edit', [PremiereController::class, 'edit']);
 
         $route->get('/premiere/delete', [PremiereController::class, 'delete']);
-        $route->post('/premiere/delete', [PremiereController::class, 'delete']);
 
         $route->get('/restore', [RestoreController::class, 'index']);
         $route->get('/premiere/restore', [PremiereController::class, 'restore']);
@@ -64,7 +64,10 @@ class routes
         $route->post('/contact', [ContactClientController::class, 'index']);
 
         $route->get('/watching', [WatchingClientController::class, 'index']);
-        $route->post('/comment', [WatchingClientController::class, 'comment']);
+        $route->post('/watching', [WatchingClientController::class, 'comment']);
+
+        $route->get('/watching/delete', [WatchingClientController::class, 'delete']);
+
 
         try {
             $route->resolve($_SERVER['REQUEST_URI'], strtolower($_SERVER['REQUEST_METHOD']));

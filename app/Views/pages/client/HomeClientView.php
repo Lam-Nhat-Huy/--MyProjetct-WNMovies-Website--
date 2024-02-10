@@ -8,7 +8,7 @@
                         <div class="hero__text">
                             <div class="label">Phiêu lưu</div>
                             <h2>Mashle: Magic and Muscles</h2>
-                            <p>Đây là một thế giới của phép thuật, nơi phép thuật...</p>
+                            <p>Đây là một thế giới của phép thuật...</p>
                             <a href="/detail/"><span>Xem ngay</span> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>

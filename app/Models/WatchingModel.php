@@ -42,4 +42,73 @@ class WatchingModel extends BaseModel
             echo "Error: " . $e->getMessage();
         }
     }
+
+    public function getOneMovies($movieId)
+    {
+        try {
+            $table = 'movies';
+            $cond = 'id';
+            return $this->getOne($table, $cond, $movieId);
+        } catch (\Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+
+    public function addComment($comment, $user_id, $movie_id)
+    {
+        try {
+            $sql = "INSERT INTO comments (user_id, movie_id, comment) VALUES (:user_id, :movie_id, :comment)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':user_id', $user_id);
+            $stmt->bindParam(':movie_id', $movie_id);
+            $stmt->bindParam(':comment', $comment);
+
+            if ($stmt->execute()) {
+                header("Location: {$_SERVER['HTTP_REFERER']}");
+                exit;
+            }
+        } catch (\Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function getCommentsById($movie_id)
+    {
+        try {
+            $sql = "SELECT u.username, cm.id , cm.user_id, cm.comment, cm.movie_id, cm.created_at 
+                    FROM comments cm, users u 
+                    WHERE cm.user_id = u.id 
+                    AND cm.is_deleted = 0 
+                    AND cm.movie_id = :movie_id
+                    ORDER BY cm.created_at DESC"; // Order by created_at in descending order
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':movie_id', $movie_id, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+    public function deleteComment($movie_id)
+    {
+        $data = ['is_deleted' => 1];
+        $cond = 'id';
+        $condValue = $movie_id;
+
+        try {
+            $model = new BaseModel();
+            $result = $model->update('comments', $data, $cond, $condValue);
+
+            if ($result) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (\Exception $e) {
+            error_log("Error: " . $e->getMessage());
+            die;
+        }
+    }
 }
