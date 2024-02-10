@@ -2,6 +2,7 @@
 
 namespace App;
 
+use AccountModel;
 use App\Core\Route;
 use App\Controllers\Admin\LoginController as LoginAdminController;
 use App\Controllers\Client\HomeController as HomeClientController;
@@ -67,6 +68,9 @@ class routes
         $route->post('/watching', [WatchingClientController::class, 'comment']);
 
         $route->get('/watching/delete', [WatchingClientController::class, 'delete']);
+
+
+
 
 
         try {

@@ -30,6 +30,7 @@ class DashboardController extends BaseController
         $getUsers = $this->DashboardModel->getUsers();
         $getMovies = $this->DashboardModel->getMovies();
         $getNewUsersCountWithinDay = $this->DashboardModel->getNewUsersCountWithinDay();
+        $getNewUsersCountWithinWeek = $this->DashboardModel->getNewUsersCountWithinWeek();
         $remainingTime = $this->DashboardModel->remainingTime();
 
         $this->view('AdminMasterView', [
@@ -40,6 +41,7 @@ class DashboardController extends BaseController
             'getUsers' => $getUsers,
             'getMovies' => $getMovies,
             'getNewUsersCountWithinDay' => $getNewUsersCountWithinDay,
+            'getNewUsersCountWithinWeek' => $getNewUsersCountWithinWeek,
             'remainingTime' => $remainingTime,
         ]);
     }

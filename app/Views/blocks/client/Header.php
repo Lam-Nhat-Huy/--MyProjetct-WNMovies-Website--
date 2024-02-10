@@ -59,7 +59,7 @@
                         <?php
                         if (isset($_SESSION['client_username'])) {
                         ?>
-                            <a style="" href=""><?= $_SESSION['client_username'] ?></a>
+                            <a href=""><?= $_SESSION['client_username'] ?></a>
                             <a href="/logout-client" onclick="return confirm('Bạn có chắc muốn đăng xuất?')">Đăng xuất</a>
                         <?php
                         } else {

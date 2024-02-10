@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-9">
                                 <div class="d-flex align-items-center align-self-start">
-                                    <h3 class="mb-0"><?= $data['getNewUsersCountWithinDay'] ?></h3>
+                                    <h3 class="mb-0"><?= $data['getNewUsersCountWithinWeek'] ?></h3>
                                 </div>
                             </div>
                             <div class="col-3">
@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h6 class="text-muted font-weight-normal">Số lượng người dùng mới theo ngày</h6>
+                        <h6 class="text-muted font-weight-normal">Số lượng người dùng mới theo tuần</h6>
                     </div>
                 </div>
             </div>
@@ -112,11 +112,13 @@
                                     </div>
                                     <div class="preview-item-content d-flex flex-grow">
                                         <div class="flex-grow">
-                                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                                                <h6 class="preview-subject"><?= $item['username'] ?></h6>
-                                                <p class="text-muted text-small"><?= calculateTimeDifference(strtotime($item['created_at'])); ?></p>
-                                            </div>
-                                            <p class="text-muted"><?= $item['email'] ?></p>
+                                            <a href="" class="text-white" style="text-decoration: none;">
+                                                <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                                                    <h6 class="preview-subject"><?= $item['username'] ?></h6>
+                                                    <p class="text-muted text-small"><?= calculateTimeDifference(strtotime($item['created_at'])); ?></p>
+                                                </div>
+                                                <p class="text-muted"><?= $item['email'] ?></p>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -144,11 +146,13 @@
                                     </div>
                                     <div class="preview-item-content d-flex flex-grow">
                                         <div class="flex-grow">
-                                            <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                                                <h6 class="preview-subject"><?= $item['name'] ?></h6>
-                                                <p class="text-muted text-small"><?= calculateTimeDifference(strtotime($item['created_at'])); ?></p>
-                                            </div>
-                                            <p class="text-muted"><?= $item['origin_name'] ?></p>
+                                            <a href="/movie/detail/?slug=<?= $item['slug'] ?>" class="text-white" style="text-decoration: none;">
+                                                <div class="d-flex d-md-block d-xl-flex justify-content-between">
+                                                    <h6 class="preview-subject"><?= $item['name'] ?></h6>
+                                                    <p class="text-muted text-small"><?= calculateTimeDifference(strtotime($item['created_at'])); ?></p>
+                                                </div>
+                                                <p class="text-muted"><?= $item['origin_name'] ?></p>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

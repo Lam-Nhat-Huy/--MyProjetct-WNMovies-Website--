@@ -38,7 +38,7 @@ class PremiereModel extends BaseModel
     public function getMoviesLimit($this_page_first_result, $result_per_page)
     {
         try {
-            $sql = "SELECT * FROM movies WHERE is_deleted = 0 LIMIT :start, :limit";
+            $sql = "SELECT * FROM movies WHERE is_deleted = 0 ORDER BY created_at DESC LIMIT :start, :limit";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':start', $this_page_first_result, PDO::PARAM_INT);
             $stmt->bindParam(':limit', $result_per_page, PDO::PARAM_INT);
@@ -48,6 +48,7 @@ class PremiereModel extends BaseModel
             echo "Error: " . $e->getMessage();
         }
     }
+
 
     public function displayHistoryMovies()
     {

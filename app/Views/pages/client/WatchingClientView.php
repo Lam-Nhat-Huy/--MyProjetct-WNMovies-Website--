@@ -102,16 +102,16 @@
                 ?>
                     <div class="anime__details__form">
                         <div class="section-title">
-                            <h5>Bình luận</h5>
+                            <h5>Đánh giá tại đây</h5>
                         </div>
                         <form action="" method="post">
-                            <textarea name="comment" placeholder="Viết bình luận tại đây"></textarea>
+                            <textarea name="comment" placeholder="Viết đánh giá tại đây"></textarea>
                             <button type="submit"><i class="fa fa-location-arrow"></i> Đánh giá</button>
                         </form>
                     </div>
                 <?php
                 } else {
-                ?><p class='text-center' style='color: #fff; font-size: 18px;'>Vui lòng <a href='/signin'>đăng nhập</a> để bình luận.</p>
+                ?><p class='text-center' style='color: #fff; font-size: 18px;'>Vui lòng <a style="color: #e63334;" href='/signin'>đăng nhập</a> để bình luận.</p>
                 <?php
                 }
 

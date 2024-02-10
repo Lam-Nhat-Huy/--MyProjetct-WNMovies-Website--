@@ -26,18 +26,6 @@
                     </div>
                 </div>
             </div>
-            <div class="hero__items set-bg" data-setbg="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/70b766ba-ddc4-43d5-b033-a31f084e633e/de0lpar-fc9cb28f-09e9-448a-af0c-2ac90fac6f62.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzcwYjc2NmJhLWRkYzQtNDNkNS1iMDMzLWEzMWYwODRlNjMzZVwvZGUwbHBhci1mYzljYjI4Zi0wOWU5LTQ0OGEtYWYwYy0yYWM5MGZhYzZmNjIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.f0awe_7la_3cuFyruRG--hiHHCVB8DC6nPxFvsIpEZk" style="height: 547px;">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="hero__text">
-                            <div class="label">Phiêu lưu</div>
-                            <h2>Your name - Tên cậu là gì?</h2>
-                            <p>Mitsuha – một nữ sinh sống tại vùng quê Nhật Bản...</p>
-                            <a href="/detail/"><span>Xem ngay</span> <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
