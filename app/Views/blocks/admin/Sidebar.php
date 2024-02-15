@@ -48,11 +48,11 @@
                 </a>
             </li>
             <li class="nav-item menu-items">
-                <a class="nav-link" href="/category/">
+                <a class="nav-link" href="/analytics/">
                     <span class="menu-icon">
-                        <i class="mdi mdi-briefcase"></i>
+                        <i class="mdi mdi-chart-bar"></i>
                     </span>
-                    <span class="menu-title">Danh sách thể loại</span>
+                    <span class="menu-title">Thống kê</span>
                 </a>
             </li>
         </ul>

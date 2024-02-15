@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="/public/client/assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/public/client/assets/css/style.css" type="text/css">
     <link rel="shortcut icon" href="/public/admin/assets/images/logos.png" />
+    <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
+
 
 </head>
 

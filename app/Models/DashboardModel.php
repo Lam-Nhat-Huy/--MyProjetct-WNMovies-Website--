@@ -79,10 +79,25 @@ class DashboardModel extends BaseModel
     public function getNewUsersCountWithinWeek()
     {
         try {
-            $sql = "SELECT COUNT(*) as new_users_count FROM users 
-                WHERE is_deleted = 0 AND role_id = 1 
-                AND created_at >= CURDATE() - INTERVAL 1 WEEK";
+            $sql = "SELECT COUNT(*) as new_users_count FROM users WHERE is_deleted = 0 AND role_id = 1  AND created_at >= CURDATE() - INTERVAL 1 WEEK";
             $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result['new_users_count'];
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    // Hàm thống kê số lượng tài khoản theo tháng
+    public function getNewUsersCountWithinMonth()
+    {
+        try {
+            $firstDayOfMonth = date('Y-m-01');
+            $sql = "SELECT COUNT(*) as new_users_count FROM users WHERE is_deleted = 0 AND role_id = 1  AND created_at >= :first_day_of_month";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':first_day_of_month', $firstDayOfMonth);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -97,6 +112,19 @@ class DashboardModel extends BaseModel
     {
         try {
             $sql = "SELECT * FROM users WHERE is_deleted = 0 AND role_id = 1 ORDER BY created_at DESC LIMIT 5";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function getIpAddressInUsers()
+    {
+        try {
+            $sql = "SELECT users.ip_address FROM users WHERE is_deleted = 0 AND role_id = 1 ORDER BY created_at DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

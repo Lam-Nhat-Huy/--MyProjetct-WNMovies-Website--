@@ -164,6 +164,43 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Quốc gia / Khu vực hàng đầu</h4>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <?php
+                                            foreach ($data['userCountsByCountry'] as $countryCode => $countryInfo) {
+                                            ?>
+                                                <tr>
+                                                    <td>
+                                                        <i class="flag-icon flag-icon-us"></i>
+                                                    </td>
+                                                    <td><?= $countryInfo['name'] ?></td>
+                                                    <td class="text-right"> <?= $countryInfo['count'] ?> </td>
+                                                    <td class="text-right font-weight-medium"> <?= $countryCode ?> </td>
+                                                </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div id="audience-map" class="vector-map"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- main-panel ends -->

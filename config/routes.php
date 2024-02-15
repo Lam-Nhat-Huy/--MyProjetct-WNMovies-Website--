@@ -10,11 +10,11 @@ use App\Controllers\Admin\DashboardController as DashboardController;
 use App\Controllers\Admin\MoviesController as MoviesController;
 use App\Controllers\Admin\PremiereController as PremiereController;
 use App\Controllers\Admin\RestoreController as RestoreController;
-use App\Controllers\Admin\UploadController as UploadController;
 use App\Controllers\Client\SignupController as SignupClientController;
 use App\Controllers\Client\SigninController as SigninClientController;
 use App\Controllers\Client\ContactController as ContactClientController;
 use App\Controllers\Client\WatchingController as WatchingClientController;
+use App\Controllers\Admin\AnalyticController as AnalyticAdminController;
 
 
 class routes
@@ -47,9 +47,6 @@ class routes
         $route->get('/premiere/restore', [PremiereController::class, 'restore']);
         $route->get('/premiere/permanently', [PremiereController::class, 'permanently']);
 
-        $route->get('/upload', [UploadController::class, 'index']);
-        $route->post('/upload-post', [UploadController::class, 'upload']);
-
         // Xử lý route phía client
         $route->get('', [HomeClientController::class, 'index']);
         $route->get('/home', [HomeClientController::class, 'index']);
@@ -68,6 +65,9 @@ class routes
         $route->post('/watching', [WatchingClientController::class, 'comment']);
 
         $route->get('/watching/delete', [WatchingClientController::class, 'delete']);
+
+        $route->get('/analytics', [AnalyticAdminController::class, 'index']);
+
 
 
 

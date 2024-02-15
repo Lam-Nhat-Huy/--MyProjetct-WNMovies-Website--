@@ -63,7 +63,7 @@ class LoginModel extends BaseModel
 
     // Xử lý đăng nhập client
 
-    public function signup($username, $password, $email)
+    public function signup($username, $password, $email, $ipAddress)
     {
         try {
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -88,9 +88,10 @@ class LoginModel extends BaseModel
                 'username' => $username,
                 'password' => $hashedPassword,
                 'email'    => $email,
+                'ip_address' => $ipAddress,
             );
 
-            if (!empty($username) && !empty($password) && !empty($email)) {
+            if (!empty($username) && !empty($password) && !empty($email) && !empty($ipAddress)) {
                 $this->insert('users', $userData);
                 $this->sendConfirmationEmail($email);
                 header('Location: /signin');

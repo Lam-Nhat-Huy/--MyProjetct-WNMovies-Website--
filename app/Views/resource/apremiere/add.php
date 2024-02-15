@@ -28,12 +28,6 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail3">Mô tả (Content)</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail3" placeholder="" name="content">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
                                     <label for="exampleInputEmail3">Năm phát hành (Year)</label>
                                     <input type="text" class="form-control" id="exampleInputEmail3" placeholder="" name="year">
                                 </div>
@@ -92,6 +86,12 @@
                                     <input type="text" class="form-control" id="exampleInputEmail3" placeholder="" name="link_embed">
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail3">Mô tả (Content)</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail3" placeholder="" name="content">
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Lưu</button>
                         <a href="/premiere/" class="btn btn-dark">Trở về</a>
@@ -101,3 +101,6 @@
         </div>
     </div>
 </div>
+<script>
+    CKEDITOR.replace('content');
+</script>
