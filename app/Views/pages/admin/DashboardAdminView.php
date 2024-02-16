@@ -180,7 +180,7 @@
                                             ?>
                                                 <tr>
                                                     <td>
-                                                        <i class="flag-icon flag-icon-us"></i>
+                                                        <span>✨</span>
                                                     </td>
                                                     <td><?= $countryInfo['name'] ?></td>
                                                     <td class="text-right"> <?= $countryInfo['count'] ?> </td>

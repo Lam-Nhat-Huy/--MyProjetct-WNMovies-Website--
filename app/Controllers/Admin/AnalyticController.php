@@ -34,6 +34,9 @@ class AnalyticController extends BaseController
         $getNewUsersCountWithinDay = $this->DashboardModel->getNewUsersCountWithinDay();
         $getNewUsersCountWithinWeek = $this->DashboardModel->getNewUsersCountWithinWeek();
         $getNewUsersCountWithinMonth = $this->DashboardModel->getNewUsersCountWithinMonth();
+        $getNewMoviesCountWithinDay = $this->DashboardModel->getNewMoviesCountWithinDay();
+        $getNewMoviesCountWithinWeek = $this->DashboardModel->getNewMoviesCountWithinWeek();
+        $getNewMoviesCountWithinMonth = $this->DashboardModel->getNewMoviesCountWithinMonth();
         $remainingTime = $this->DashboardModel->remainingTime();
 
         $this->view('AdminMasterView', [
@@ -46,6 +49,9 @@ class AnalyticController extends BaseController
             'getNewUsersCountWithinDay' => $getNewUsersCountWithinDay,
             'getNewUsersCountWithinWeek' => $getNewUsersCountWithinWeek,
             'getNewUsersCountWithinMonth' => $getNewUsersCountWithinMonth,
+            'getNewMoviesCountWithinDay' => $getNewMoviesCountWithinDay,
+            'getNewMoviesCountWithinWeek' => $getNewMoviesCountWithinWeek,
+            'getNewMoviesCountWithinMonth' => $getNewMoviesCountWithinMonth,
             'remainingTime' => $remainingTime,
             'userCountsByCountry' => $this->analyticCountry(),
         ]);

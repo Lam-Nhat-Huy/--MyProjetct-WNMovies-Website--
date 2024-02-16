@@ -71,7 +71,12 @@ class DashboardController extends BaseController
             // Lặp qua danh sách các địa chỉ IP
             foreach ($users as $user) {
                 // Lấy địa chỉ IP của người dùng từ danh sách
-                $ipAddress = $user['ip_address'];
+
+                if (isset($user['ip_address'])) {
+                    $ipAddress = $user['ip_address'];
+                } else {
+                    $ipAddress = '116.111.186.45';
+                }
 
                 // Truy vấn thông tin về quốc gia từ địa chỉ IP sử dụng thư viện GeoIP2
                 $record = $reader->country($ipAddress);

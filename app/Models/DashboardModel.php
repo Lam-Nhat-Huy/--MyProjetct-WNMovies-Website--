@@ -107,6 +107,51 @@ class DashboardModel extends BaseModel
         }
     }
 
+    // Hàm thống kê số lượng phim mới theo ngày
+    public function getNewMoviesCountWithinDay()
+    {
+        try {
+            $sql = "SELECT COUNT(*) as new_movies_count FROM movies WHERE is_deleted = 0 AND created_at >= CURDATE()";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result['new_movies_count'];
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    // Hàm thống kê số lượng phim theo tuần
+    public function getNewMoviesCountWithinWeek()
+    {
+        try {
+            $sql = "SELECT COUNT(*) as new_movies_count FROM movies WHERE is_deleted = 0 AND created_at >= CURDATE() - INTERVAL 1 WEEK";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result['new_movies_count'];
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    // Hàm thống kê số lượng phim theo tháng
+    public function getNewMoviesCountWithinMonth()
+    {
+        try {
+            $sql = "SELECT COUNT(*) as new_movies_count FROM movies WHERE is_deleted = 0 AND created_at >= DATE_FORMAT(CURDATE() ,'%Y-%m-01')";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $result['new_movies_count'];
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
 
     public function getUsers()
     {

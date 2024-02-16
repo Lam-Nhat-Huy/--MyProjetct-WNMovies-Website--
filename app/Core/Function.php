@@ -20,7 +20,7 @@ function calculateTimeDifference($timestamp)
     } elseif ($hours < 24) {
         return $hours . " giờ trước";
     } elseif ($days < 30) {
-        return $days . " ngày ago";
+        return $days . " ngày trước";
     } else {
         $months = round($days / 30);
         $years = round($days / 365);
