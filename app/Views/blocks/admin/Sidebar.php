@@ -55,6 +55,14 @@
                     <span class="menu-title">Thống kê</span>
                 </a>
             </li>
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="/comment/">
+                    <span class="menu-icon">
+                        <i class="mdi mdi-comment"></i>
+                    </span>
+                    <span class="menu-title">Bình luận</span>
+                </a>
+            </li>
         </ul>
     </nav>
     <!-- partial -->
