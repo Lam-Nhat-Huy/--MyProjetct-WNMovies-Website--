@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4">
                             <div class="btn__all">
-                                <a href="#" class="primary-btn">Xem thêm <span class="arrow_right"></span></a>
+
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <?php
                         foreach ($data['movies'] as $item) {
                         ?>
-                            <a href="/watching/?slug=<?= $item['slug'] ?>/?movie_id=<?= $item['id'] ?>">
+                            <a href="/detail/?slug=<?= $item['slug'] ?>/?movie_id=<?= $item['id'] ?>">
                                 <div class="col-lg-4 col-md-6 col-sm-6">
                                     <div class="product__item">
                                         <div class="product__item__pic set-bg" data-setbg="<?= $item['thumb_url'] ?>">

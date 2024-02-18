@@ -16,6 +16,7 @@ use App\Controllers\Client\ContactController as ContactClientController;
 use App\Controllers\Client\WatchingController as WatchingClientController;
 use App\Controllers\Admin\AnalyticController as AnalyticAdminController;
 use App\Controllers\Admin\CommentController as CommentAdminController;
+use App\Controllers\Client\DetailController as DetailClientController;
 
 
 class routes
@@ -71,6 +72,10 @@ class routes
 
         $route->get('/comment', [CommentAdminController::class, 'index']);
         $route->get('/comment/delete', [CommentAdminController::class, 'delete']);
+
+
+        $route->get('/detail', [DetailClientController::class, 'index']);
+        $route->post('/detail', [WatchingClientController::class, 'comment']);
 
 
 

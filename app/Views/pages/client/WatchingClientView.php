@@ -32,7 +32,7 @@
                         ?>
                                 <div class="col-6 col-md-4 col-lg-3">
                                     <a href="javascript:void(0);" onclick="changeEpisode('<?= $episodeData['link_embed'] ?>', '<?= $episodeData['name'] ?>')" class="d-block text-center my-2">
-                                        Tập <?= $episodeData['name'] ?>
+                                        <?= $episodeData['name'] ?>
                                     </a>
                                 </div>
                         <?php
@@ -124,6 +124,8 @@
 <script>
     function changeEpisode(newEpisodeLink, episodeName) {
         document.querySelector('.anime__video__player iframe').src = newEpisodeLink;
-        document.getElementById('currentEpisodeTitle').innerHTML = '<h5>' + episodeName + '</h5>';
+        // Concatenate the movie name and the episode name
+        var fullEpisodeName = '<?= $data['getSlugMovies']['movie']['name']; ?> ' + episodeName;
+        document.querySelector('.anime__details__episodes .section-title h5').innerHTML = fullEpisodeName;
     }
 </script>

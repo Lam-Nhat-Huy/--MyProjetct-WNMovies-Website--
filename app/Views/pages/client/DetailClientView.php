@@ -3,7 +3,7 @@
         <div class="anime__details__content">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="anime__details__pic set-bg" data-setbg="/public/client/assets/img/anime/details-pic.jpg">
+                    <div class="anime__details__pic set-bg" data-setbg="<?= $data['getSlugMovies']['movie']['thumb_url']; ?>">
                         <div class="comment"><i class="fa fa-comments"></i> 11</div>
                         <div class="view"><i class="fa fa-eye"></i> 9141</div>
                     </div>
@@ -11,8 +11,8 @@
                 <div class="col-lg-9">
                     <div class="anime__details__text">
                         <div class="anime__details__title">
-                            <h3>Fate Stay Night: Unlimited Blade</h3>
-                            <span>フェイト／ステイナイト, Feito／sutei naito</span>
+                            <h3><?= $data['getSlugMovies']['movie']['name']; ?></h3>
+                            <span><?= $data['getSlugMovies']['movie']['origin_name']; ?></span>
                         </div>
                         <div class="anime__details__rating">
                             <div class="rating">
@@ -24,35 +24,54 @@
                             </div>
                             <span>1.029 Votes</span>
                         </div>
-                        <p>Every human inhabiting the world of Alcia is branded by a “Count” or a number written on
-                            their body. For Hina’s mother, her total drops to 0 and she’s pulled into the Abyss,
-                            never to be seen again. But her mother’s last words send Hina on a quest to find a
-                            legendary hero from the Waste War - the fabled Ace!</p>
+                        <p><?= $data['getSlugMovies']['movie']['content']; ?></p>
                         <div class="anime__details__widget">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                                    <ul>
-                                        <li><span>Type:</span> TV Series</li>
-                                        <li><span>Studios:</span> Lerche</li>
-                                        <li><span>Date aired:</span> Oct 02, 2019 to ?</li>
-                                        <li><span>Status:</span> Airing</li>
-                                        <li><span>Genre:</span> Action, Adventure, Fantasy, Magic</li>
+                                    <ul class="list-unstyled">
+                                        <?php
+                                        $datas = $data['getSlugMovies']['movie'];
+                                        ?>
+                                        <li><span>Thể loại:</span>
+                                            <?php foreach ($datas['category'] as $index => $r) {
+                                                echo $r['name'];
+                                                if ($index < count($datas['category']) - 1) {
+                                                    echo ', ';
+                                                }
+                                            } ?>
+                                        </li>
+                                        <li class="mt-2"><span>Quốc gia:</span>
+                                            <?php
+                                            foreach ($datas['country'] as $r) {
+                                                echo $r['name'];
+                                            }
+                                            ?>
+                                        </li>
+                                        <li class="mt-2"><span>Năm phát hành:</span> <?= $data['getSlugMovies']['movie']['year']; ?></li>
+                                        <li class="mt-2"><span>Thời gian:</span> <?= $data['getSlugMovies']['movie']['time']; ?></li>
+                                        <li class="mt-2"><span>Slug:</span> <?= $data['getSlugMovies']['movie']['slug']; ?></li>
                                     </ul>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
-                                    <ul>
-                                        <li><span>Scores:</span> 7.31 / 1,515</li>
-                                        <li><span>Rating:</span> 8.5 / 161 times</li>
-                                        <li><span>Duration:</span> 24 min/ep</li>
-                                        <li><span>Quality:</span> HD</li>
-                                        <li><span>Views:</span> 131,541</li>
+                                    <ul class="list-unstyled">
+                                        <li><span>Diễn viên:</span>
+                                            <?php foreach ($datas['actor'] as $index => $r) {
+                                                echo $r;
+                                                if ($index < count($datas['actor']) - 1) {
+                                                    echo ', ';
+                                                }
+                                            } ?>
+                                        </li>
+                                        <li class="mt-2"><span>Phụ đề:</span> <?= $data['getSlugMovies']['movie']['lang']; ?></li>
+                                        <li class="mt-2"><span>Chất lượng:</span> <?= $data['getSlugMovies']['movie']['quality']; ?></li>
+                                        <li class="mt-2"><span>Trạng thái:</span> <span class="text-success"><?= $data['getSlugMovies']['movie']['status']; ?></span></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="anime__details__btn">
-                            <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-                            <a href="/watching/" class="watch-btn"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
+                            <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Thêm phim vào mục yêu thích</a>
+                            <a href="/watching/?slug=<?= $_GET['slug'] ?>" class="watch-btn"><span>Xem ngay</span> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -62,99 +81,71 @@
             <div class="col-lg-8 col-md-8">
                 <div class="anime__details__review">
                     <div class="section-title">
-                        <h5>Reviews</h5>
+                        <h5>Đánh giá phim</h5>
                     </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="/public/client/assets/img/anime/review-1.jpg" alt="">
+                    <?php
+                    foreach ($data['getCommentsById'] as $item) {
+                    ?>
+                        <div class="anime__review__item">
+                            <div class="anime__review__item__pic">
+                                <img src="/public/client/assets/img/anime/review-1.jpg" alt="">
+                            </div>
+                            <div class="anime__review__item__text">
+                                <h6><?= $item['username'] ?> - <span><?= calculateTimeDifference(strtotime($item['created_at'])); ?></span></h6>
+                                <p><?= $item['comment'] ?></p>
+                                <?php
+                                // Check if the logged-in user is the author of the comment
+                                if (isset($_SESSION['client_user_id']) && $_SESSION['client_user_id'] == $item['user_id']) {
+                                    echo "<a class='float-right text-danger' href='/watching/delete/?id={$item['id']}'><i class='fa fa-trash'></i></a>";
+                                }
+                                ?>
+                            </div>
                         </div>
-                        <div class="anime__review__item__text">
-                            <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                            <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                "demons" LOL</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="/public/client/assets/img/anime/review-2.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                            <p>Finally it came out ages ago</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="/public/client/assets/img/anime/review-3.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                            <p>Where is the episode 15 ? Slow update! Tch</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="/public/client/assets/img/anime/review-4.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Chris Curry - <span>1 Hour ago</span></h6>
-                            <p>whachikan Just noticed that someone categorized this as belonging to the genre
-                                "demons" LOL</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="/public/client/assets/img/anime/review-5.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Lewis Mann - <span>5 Hour ago</span></h6>
-                            <p>Finally it came out ages ago</p>
-                        </div>
-                    </div>
-                    <div class="anime__review__item">
-                        <div class="anime__review__item__pic">
-                            <img src="/public/client/assets/img/anime/review-6.jpg" alt="">
-                        </div>
-                        <div class="anime__review__item__text">
-                            <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                            <p>Where is the episode 15 ? Slow update! Tch</p>
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
-                <div class="anime__details__form">
-                    <div class="section-title">
-                        <h5>Your Comment</h5>
+                <?php
+                if (isset($_SESSION['client_username'])) {
+                ?>
+                    <div class="anime__details__form">
+                        <div class="section-title">
+                            <h5>Đánh giá tại đây</h5>
+                        </div>
+                        <form action="" method="post">
+                            <textarea name="comment" placeholder="Viết đánh giá tại đây"></textarea>
+                            <button type="submit"><i class="fa fa-location-arrow"></i> Đánh giá</button>
+                        </form>
                     </div>
-                    <form action="#">
-                        <textarea placeholder="Your Comment"></textarea>
-                        <button type="submit"><i class="fa fa-location-arrow"></i> Review</button>
-                    </form>
-                </div>
+                <?php
+                } else {
+                ?><p class='text-center' style='color: #fff; font-size: 18px;'>Vui lòng <a style="color: #e63334;" href='/signin'>đăng nhập</a> để bình luận.</p>
+                <?php
+                }
+
+                ?>
             </div>
-            <div class="col-lg-4 col-md-4">
-                <div class="anime__details__sidebar">
-                    <div class="section-title">
-                        <h5>you might like...</h5>
-                    </div>
-                    <div class="product__sidebar__view__item set-bg" data-setbg="/public/client/assets/img/sidebar/tv-1.jpg">
-                        <div class="ep">18 / ?</div>
-                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                        <h5><a href="#">Boruto: Naruto next generations</a></h5>
-                    </div>
-                    <div class="product__sidebar__view__item set-bg" data-setbg="/public/client/assets/img/sidebar/tv-2.jpg">
-                        <div class="ep">18 / ?</div>
-                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                        <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                    </div>
-                    <div class="product__sidebar__view__item set-bg" data-setbg="/public/client/assets/img/sidebar/tv-3.jpg">
-                        <div class="ep">18 / ?</div>
-                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                        <h5><a href="#">Sword art online alicization war of underworld</a></h5>
-                    </div>
-                    <div class="product__sidebar__view__item set-bg" data-setbg="/public/client/assets/img/sidebar/tv-4.jpg">
-                        <div class="ep">18 / ?</div>
-                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                        <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
+            <div class="col-lg-4">
+                <div class="product__sidebar">
+                    <div class="product__sidebar__view">
+                        <div class="section-title">
+                            <h5>Phim liên quan</h5>
+                        </div>
+                        <div class="filter__gallery">
+                            <?php
+                            foreach ($data['getAllMovies'] as $item) {
+                            ?>
+                                <a href="/watching/?slug=<?= $item['slug'] ?>">
+                                    <div class="product__sidebar__view__item set-bg mix day years" data-setbg="<?= $item['thumb_url'] ?>">
+                                        <div class="ep"><?= $item['year'] ?></div>
+                                        <div class="view"><?= $item['country'] ?></div>
+                                        <h5><a href=""><?= $item['name'] ?></a></h5>
+                                    </div>
+                                </a>
+                            <?php
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
