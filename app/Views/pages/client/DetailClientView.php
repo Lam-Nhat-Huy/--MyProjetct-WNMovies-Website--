@@ -4,8 +4,6 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="anime__details__pic set-bg" data-setbg="<?= $data['getSlugMovies']['movie']['thumb_url']; ?>">
-                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -13,16 +11,6 @@
                         <div class="anime__details__title">
                             <h3><?= $data['getSlugMovies']['movie']['name']; ?></h3>
                             <span><?= $data['getSlugMovies']['movie']['origin_name']; ?></span>
-                        </div>
-                        <div class="anime__details__rating">
-                            <div class="rating">
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star"></i></a>
-                                <a href="#"><i class="fa fa-star-half-o"></i></a>
-                            </div>
-                            <span>1.029 Votes</span>
                         </div>
                         <p><?= $data['getSlugMovies']['movie']['content']; ?></p>
                         <div class="anime__details__widget">
@@ -70,7 +58,7 @@
                             </div>
                         </div>
                         <div class="anime__details__btn">
-                            <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Thêm phim vào mục yêu thích</a>
+                            <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Yêu thích</a>
                             <a href="/watching/?slug=<?= $_GET['slug'] ?>" class="watch-btn"><span>Xem ngay</span> <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -94,7 +82,6 @@
                                 <h6><?= $item['username'] ?> - <span><?= calculateTimeDifference(strtotime($item['created_at'])); ?></span></h6>
                                 <p><?= $item['comment'] ?></p>
                                 <?php
-                                // Check if the logged-in user is the author of the comment
                                 if (isset($_SESSION['client_user_id']) && $_SESSION['client_user_id'] == $item['user_id']) {
                                     echo "<a class='float-right text-danger' href='/watching/delete/?id={$item['id']}'><i class='fa fa-trash'></i></a>";
                                 }

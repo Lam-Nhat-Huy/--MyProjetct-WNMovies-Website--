@@ -122,10 +122,9 @@
 </section>
 <!-- Anime Section End -->
 <script>
-    function changeEpisode(newEpisodeLink, episodeName) {
+    function changeEpisode(newEpisodeLink, episodeNumber, episodeName) {
         document.querySelector('.anime__video__player iframe').src = newEpisodeLink;
-        // Concatenate the movie name and the episode name
-        var fullEpisodeName = '<?= $data['getSlugMovies']['movie']['name']; ?> ' + episodeName;
+        var fullEpisodeName = '<?= $data['getSlugMovies']['movie']['name']; ?> Tập ' + episodeNumber;
         document.querySelector('.anime__details__episodes .section-title h5').innerHTML = fullEpisodeName;
     }
 </script>
