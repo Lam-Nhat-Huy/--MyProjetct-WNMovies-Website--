@@ -1283,7 +1283,7 @@ ol {
 	transition: all, 0.3s;
 }
 
-.anime__details__episodes a:hover {
+.anime__details__episodes a:focus {
 	color: #000000;
 	background: #ffffff;
 }
