@@ -22,6 +22,8 @@ class HomeController extends BaseController
         $this_page_first_result = ($page - 1) * $result_per_page;
         $number_of_pages = ceil($number_of_results / $result_per_page);
 
+        $recommand_movies = $this->HomeModel->recommendMovieApi();
+
         $i = [
             'getNewMovies' => $this->HomeModel->getNewMovies(),
             'displayMoviesList' => $this->HomeModel->displayMoviesList()
@@ -33,6 +35,7 @@ class HomeController extends BaseController
             'getNewMovies' => $i['getNewMovies'],
             'movies' => $this->HomeModel->getMoviesLimit($this_page_first_result, $result_per_page),
             'number' => $number_of_pages,
+            'recommendMovies' => $recommand_movies
         ]);
     }
 }

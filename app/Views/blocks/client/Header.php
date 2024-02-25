@@ -50,7 +50,7 @@
                         <nav class="header__menu mobile-menu">
                             <ul>
                                 <li><a href="/home/">Trang chủ</a></li>
-                                <li><a href="">Bài viết</a></li>
+                                <li><a href="">Phim yêu thích</a></li>
                                 <li><a href="/contact/">Liên hệ</a></li>
                             </ul>
                         </nav>

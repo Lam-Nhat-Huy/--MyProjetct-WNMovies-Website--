@@ -57,8 +57,10 @@ class WatchingController extends BaseController
             $comment = $_POST['comment'];
             $user_id = $_SESSION['client_user_id'];
             $movie_id = $movie_id;
+            $rating = $_POST['rate'];
+
             if (!empty($comment)) {
-                $this->WatchingModel->addComment($comment, $user_id, $movie_id);
+                $this->WatchingModel->addComment($comment, $user_id, $movie_id, $rating);
                 exit;
             }
         }

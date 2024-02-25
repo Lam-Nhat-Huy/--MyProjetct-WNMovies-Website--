@@ -55,14 +55,15 @@ class WatchingModel extends BaseModel
     }
 
 
-    public function addComment($comment, $user_id, $movie_id)
+    public function addComment($comment, $user_id, $movie_id, $rating)
     {
         try {
-            $sql = "INSERT INTO comments (user_id, movie_id, comment) VALUES (:user_id, :movie_id, :comment)";
+            $sql = "INSERT INTO comments (user_id, movie_id, comment, rating) VALUES (:user_id, :movie_id, :comment, :rating)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':user_id', $user_id);
             $stmt->bindParam(':movie_id', $movie_id);
             $stmt->bindParam(':comment', $comment);
+            $stmt->bindParam(':rating', $rating);
 
             if ($stmt->execute()) {
                 header("Location: {$_SERVER['HTTP_REFERER']}");

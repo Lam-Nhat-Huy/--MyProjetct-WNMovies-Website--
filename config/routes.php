@@ -78,6 +78,7 @@ class routes
         $route->post('/detail', [WatchingClientController::class, 'comment']);
 
 
+        $route->get('/detail/favourite', [DetailClientController::class, 'addFavourite']);
 
 
 

@@ -45,4 +45,16 @@ class HomeModel extends BaseModel
             echo "Error: " . $e->getMessage();
         }
     }
+
+    public function recommendMovieApi()
+    {
+        try {
+            $api = 'http://127.0.0.1:2000/api/data/Demographic/4/2';
+            $feacthJson = file_get_contents($api);
+            $jsonDecode = json_decode($feacthJson, true);
+            return $jsonDecode;
+        } catch (\Exception $e) {
+            error_log('Error accessing API: ' . $e->getMessage(), 0);
+        }
+    }
 }

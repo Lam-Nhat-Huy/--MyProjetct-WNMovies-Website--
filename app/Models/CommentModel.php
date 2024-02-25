@@ -8,8 +8,6 @@ use PDO;
 
 class CommentModel extends BaseModel
 {
-
-
     public function getComment()
     {
         try {
