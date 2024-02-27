@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use PDO;
+
 class DetailModel extends BaseModel
 {
     public function addFavoriteMovie($user_id, $movie_id)
@@ -35,6 +37,66 @@ class DetailModel extends BaseModel
             }
         } catch (\Exception $e) {
             echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function getIdMovies()
+    {
+        try {
+            $url = $_GET['slug'];
+            $query = parse_url($url, PHP_URL_QUERY);
+            parse_str($query, $params);
+            $id = intval($params['movie_id']);
+            return $id;
+        } catch (\Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    public function getRecommendMovies($movie_id)
+    {
+        try {
+            // Câu truy vấn SQL để lấy các bộ phim đề xuất dựa trên một bộ phim cụ thể (movie_id)
+            $sql = "SELECT m.id, AVG(c.rating) AS vote_average, COUNT(c.rating) AS vote_count, COUNT(c.movie_id) AS comment_count FROM movies m JOIN comments c ON m.id = c.movie_id WHERE m.id = :movie_id"; // Giới hạn chỉ lấy 5 bộ phim đề xuất
+
+            // Chuẩn bị và thực thi câu truy vấn
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':movie_id', $movie_id);
+            $stmt->execute();
+
+            // Lấy kết quả trả về
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            return $result;
+        } catch (\Exception $e) {
+            // Xử lý lỗi nếu có
+            echo "Error: " . $e->getMessage();
+            return null;
+        }
+    }
+
+
+    public function recommendMovieApi($vote_average, $vote_count)
+    {
+        try {
+            // Tạo URL API với tham số $vote_average và $vote_count
+            $api = 'http://127.0.0.1:2000/api/data/Demographic/' . $vote_average . '/' . $vote_count;
+
+            // Gửi yêu cầu GET đến API
+            $feacthJson = file_get_contents($api);
+
+            // Kiểm tra nếu có dữ liệu trả về
+            if (!empty($feacthJson)) {
+                // Decode JSON thành mảng
+                $jsonDecode = json_decode($feacthJson, true);
+                return $jsonDecode;
+            } else {
+                return null;
+            }
+        } catch (\Exception $e) {
+            // Ghi log lỗi nếu có
+            error_log('Error accessing API: ' . $e->getMessage(), 0);
+            return null;
         }
     }
 }

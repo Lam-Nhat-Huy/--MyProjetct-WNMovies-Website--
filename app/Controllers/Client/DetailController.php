@@ -35,7 +35,11 @@ class DetailController extends BaseController
             'movie_id' => intval($params['movie_id'])
         ];
 
-        $recommand_movies = $this->HomeModel->recommendMovieApi();
+        $getRecommendMovies = $this->DetailModel->getRecommendMovies($o['movie_id']);
+
+        foreach ($getRecommendMovies as $item) {
+            $recommand_movies = $this->DetailModel->recommendMovieApi($item['vote_average'], $item['vote_count']);
+        }
 
         $getCommentsById = $this->WatchingModel->getCommentsById($o['movie_id']);
         $getSlugMovies = $this->WatchingModel->getSlugMovies($i['slug']);

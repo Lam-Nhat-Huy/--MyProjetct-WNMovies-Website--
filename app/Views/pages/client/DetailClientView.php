@@ -210,6 +210,43 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-12">
+            <div class="trending__product">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                        <div class="section-title">
+                            <h4>Gợi ý phim</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <?php
+                    foreach ($data['recommendMovies'] as $item) {
+                    ?>
+                        <a href="/detail/?slug=<?= $item['slug'] ?>/?movie_id=<?= $item['id'] ?>">
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="<?= $item['thumb_url'] ?>">
+                                        <div class="ep"><?= round($item['vote_average'], 2) ?> ⭐</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> <?= $item['comment_count'] ?></div>
+                                        <div class="view"><?= $item['score'] ?></div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li><?= $item['category'] ?></li>
+                                        </ul>
+                                        <h5><a href="#"><?= $item['name'] ?></a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 <!-- Anime Section End -->

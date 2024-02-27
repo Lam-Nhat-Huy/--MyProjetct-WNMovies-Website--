@@ -23,7 +23,7 @@ class WatchingModel extends BaseModel
     public function getSlugMovies($slug)
     {
         $i = [
-            'slug' => "https://ophim1.com/phim/" . $slug,
+            'slug' => "http://ophim1.com/phim/" . $slug,
             'data' => ''
         ];
 

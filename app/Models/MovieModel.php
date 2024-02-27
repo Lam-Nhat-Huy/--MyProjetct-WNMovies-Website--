@@ -42,7 +42,7 @@ class MovieModel extends BaseModel
     public function getApiMovies($page)
     {
         $i = [
-            'api' => 'https://ophim1.com/danh-sach/phim-moi-cap-nhat/?page=' . $page,
+            'api' => 'http://ophim1.com/danh-sach/phim-moi-cap-nhat/?page=' . $page,
             'data' => ''
         ];
 
@@ -53,7 +53,7 @@ class MovieModel extends BaseModel
     public function getSlugMovies($slug)
     {
         $i = [
-            'slug' => "https://ophim1.com/phim/" . $slug,
+            'slug' => "http://ophim1.com/phim/" . $slug,
             'data' => ''
         ];
 

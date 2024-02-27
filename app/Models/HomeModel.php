@@ -49,12 +49,17 @@ class HomeModel extends BaseModel
     public function recommendMovieApi()
     {
         try {
-            $api = 'http://127.0.0.1:2000/api/data/Demographic/4/2';
+            $api = 'http://127.0.0.1:2000/api/data/Demographic/1.2/250';
             $feacthJson = file_get_contents($api);
-            $jsonDecode = json_decode($feacthJson, true);
-            return $jsonDecode;
+            if (!empty($feacthJson)) {
+                $jsonDecode = json_decode($feacthJson, true);
+                return $jsonDecode;
+            } else {
+                return null;
+            }
         } catch (\Exception $e) {
             error_log('Error accessing API: ' . $e->getMessage(), 0);
+            return null; // hoặc bạn có thể xử lý lỗi ở đây theo yêu cầu của bạn
         }
     }
 }
